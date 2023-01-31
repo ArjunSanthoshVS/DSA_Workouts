@@ -29,5 +29,4 @@ queue1.enqueue(20)
 queue1.enqueue(30)
 queue1.enqueue(40)
 queue1.enqueue(50)
-
 queue1.print()
