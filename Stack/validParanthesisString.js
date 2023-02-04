@@ -18,5 +18,5 @@ function validParanthesis(str) {
     return stack.length === 0
 }
 
-let str = "{}"
+let str = "[{}]"
 console.log(validParanthesis(str));

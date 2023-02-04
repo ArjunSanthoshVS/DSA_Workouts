@@ -3,13 +3,15 @@ class HashTable {
         this.table = new Array(size)
         this.size = size
     }
+
     hash(key) {
-        let total = 0
+        let index = 0
         for (let i = 0; i < key.length; i++) {
-            total += key.charCodeAt(i)
+            index += key.charCodeAt(i)
         }
-        return total % this.size
+        return index % this.size
     }
+
     set(key, value) {
         const index = this.hash(key)
         // this.table[index] = value
@@ -25,6 +27,7 @@ class HashTable {
             }
         }
     }
+
     get(key) {
         const index = this.hash(key)
         // return this.table[index]
@@ -37,6 +40,7 @@ class HashTable {
         }
         return undefined
     }
+
     remove(key) {
         const index = this.hash(key)
         // this.table[index] = undefined
@@ -48,6 +52,7 @@ class HashTable {
             }
         }
     }
+
     display() {
         for (let i = 0; i < this.table.length; i++) {
             if (this.table[i]) {
@@ -56,11 +61,13 @@ class HashTable {
         }
     }
 }
+
 const table = new HashTable(50)
 
 table.set('name', 'Arjun')
 table.set('age', 21)
 table.set('mane', 'Achu')
+table.set('place', 'Thrissur')
 table.display();
 
 console.log(table.get("name"));

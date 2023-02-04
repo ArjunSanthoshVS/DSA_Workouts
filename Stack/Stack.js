@@ -35,5 +35,3 @@ console.log(stack.size());
 stack.print()
 
 console.log(stack.peek());
-
-console.log(stack.pop());

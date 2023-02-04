@@ -18,6 +18,6 @@ function quickSort(arr) {
     return [...quickSort(left), pivot, ...quickSort(right)]
 }
 
-const arr = [8, 20, -2, 4, -6]
+const arr = [8, 20, 20, 20, -2, 4, 8, -6]
 
 console.log(quickSort(arr));

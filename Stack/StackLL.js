@@ -1,4 +1,4 @@
-const LinkedList = require('./LinkedList')
+const LinkedList = require('../LinkedList/LinkedList')
 
 class LinkedListStack {
     constructor() {
@@ -10,7 +10,7 @@ class LinkedListStack {
     }
 
     pop() {
-        return this.list.removeFromFront(3)
+        return this.list.removeFromFront()
     }
 
     peek() {
@@ -28,7 +28,6 @@ class LinkedListStack {
     print() {
         return this.list.print()
     }
-
 }
 
 const stack = new LinkedListStack()

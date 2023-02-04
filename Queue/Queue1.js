@@ -1,6 +1,6 @@
 class Queue1 {
     constructor() {
-        this.items = {}
+        this.items = []
         this.front = 0
         this.rear = 0
     }
