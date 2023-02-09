@@ -7,7 +7,7 @@ function hash(key, size) {
     return index % size
 }
 
-let size = 30
+let size = 100
 let key = 'name'
 
 console.log(hash(key, size));

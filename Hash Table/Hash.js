@@ -7,6 +7,7 @@ class HashTable {
     hash(key) {
         let index = 0
         for (let i = 0; i < key.length; i++) {
+            console.log(key.charCodeAt(i, "  "));
             index += key.charCodeAt(i)
         }
         return index % this.size

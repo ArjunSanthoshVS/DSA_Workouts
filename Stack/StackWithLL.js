@@ -32,6 +32,28 @@ class Stack {
             this.size--
         }
     }
+
+    peek() {
+        if (!this.bottom) {
+            return null
+        } else {
+            return this.top.value
+        }
+    }
+
+    display() {
+        if (!this.bottom) {
+            return null
+        } else {
+            let curr = this.bottom
+            let listValues = ''
+            while (curr) {
+                listValues += `${curr.value} `
+                curr = curr.next;
+            }
+            console.log(listValues);
+        }
+    }
 }
 
 const list = new Stack()
@@ -41,6 +63,7 @@ list.push(30)
 list.push(40)
 list.push(50)
 list.push(100)
-console.log(list, 'llll');
+list.display()
 list.pop()
-console.log(list, 'ppppp');
+list.display()
+console.log(list.peek());
