@@ -1,3 +1,5 @@
+const treeify = require('treeify')
+
 class Node {
     constructor(value) {
         this.value = value
@@ -25,8 +27,6 @@ class BinarySearch {
     }
 
     insertNode(root, newNode) {
-        console.log(root.value, 'lllllllll');
-        console.log(newNode.value, 'hhhhh');
         if (newNode.value < root.value) {
             if (root.left === null) {
                 root.left = newNode
@@ -146,7 +146,7 @@ class BinarySearch {
 }
 
 const bst = new BinarySearch()
-console.log(bst.isEmpty())
+// console.log(bst.isEmpty())
 
 bst.insert(10)
 bst.insert(5)
@@ -154,10 +154,10 @@ bst.insert(15)
 bst.insert(3)
 bst.insert(7)
 
-console.log(bst.search(bst.root, 10));
-console.log(bst.search(bst.root, 5));
-console.log(bst.search(bst.root, 15));
-console.log(bst.search(bst.root, 20));
+// console.log(bst.search(bst.root, 10));
+// console.log(bst.search(bst.root, 5));
+// console.log(bst.search(bst.root, 15));
+// console.log(bst.search(bst.root, 20));
 
 console.log('////////preOrder///////');
 bst.preOrder(bst.root)
@@ -168,12 +168,16 @@ bst.inOrder(bst.root)
 console.log('////////postOrder///////');
 bst.postOrder(bst.root)
 
-console.log('////////Level Order///////');
-bst.levelOrder()
+// console.log('////////Level Order///////');
+// bst.levelOrder()
 
-console.log("Min value :", bst.min(bst.root));
+// console.log("Min value :", bst.min(bst.root));
 
-console.log("Max value :", bst.max(bst.root));
+// console.log("Max value :", bst.max(bst.root));
 
-bst.delete(15)
-bst.levelOrder()
+// bst.delete(15)
+// bst.levelOrder()
+
+// module.exports = BinarySearch
+
+console.log(treeify.asTree(bst, true));
