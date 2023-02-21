@@ -39,7 +39,7 @@ class Closest {
     closestValue(value) {
         let closest = null
         let current = this.root
-        console.log(current.value);
+        // console.log(current.value);
         let difference = Infinity
         while (current) {
             let newDifference = Math.abs(value - current.value)
@@ -70,5 +70,5 @@ closest.insert(12);
 closest.insert(20);
 
 
-console.log(closest.closestValue(1)); // 7
+console.log(closest.closestValue(1));
 

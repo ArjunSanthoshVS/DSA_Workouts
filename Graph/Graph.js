@@ -47,6 +47,48 @@ class Graph {
         }
         delete this.adjacencyList[vertex]
     }
+
+    // bfs(startingVertex) {
+    //     const visited = {};
+    //     const queue = [startingVertex];
+    //     const result = [];
+
+    //     visited[startingVertex] = true;
+
+    //     while (queue.length) {
+    //         const currentVertex = queue.shift();
+    //         result.push(currentVertex);
+    //         console.log(this.adjacencyList[currentVertex]);
+    //         this.adjacencyList[currentVertex].forEach((neighbor) => {
+    //             if (!visited[neighbor]) {
+    //                 visited[neighbor] = true;
+    //                 queue.push(neighbor);
+    //             }
+    //         });
+    //     }
+
+    //     return result;
+    // }
+
+    // dfs(startingVertex) {
+    //     const visited = {};
+    //     const result = [];
+
+    //     const dfsHelper = (vertex) => {
+    //         visited[vertex] = true;
+    //         result.push(vertex);
+
+    //         this.adjacencyList[vertex].forEach((neighbor) => {
+    //             if (!visited[neighbor]) {
+    //                 dfsHelper(neighbor);
+    //             }
+    //         });
+    //     };
+
+    //     dfsHelper(startingVertex);
+
+    //     return result;
+    // }
 }
 
 const graph = new Graph()
@@ -66,3 +108,6 @@ console.log(graph.hasEdge("A", "C"));
 graph.removeVertex("C")
 
 graph.display()
+
+// graph.bfs('A'); // BFS traversal starting from vertex A
+// graph.dfs('A'); // DFS traversal starting from vertex A

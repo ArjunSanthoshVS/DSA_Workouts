@@ -171,17 +171,20 @@
 
 class Sample {
     constructor() {
-        this.heap = [null]
+        this.heap = []
     }
+
     insert(num) {
         this.heap.push(num)
-        if (this.heap.length > 2) {
+        if (this.heap.length > 1) {
             let idx = this.heap.length - 1
-            while (this.heap[idx] < this.heap[Math.floor(idx / 2)]) {
+            let child = this.heap[idx]
+            let parent = this.heap[idx / 2]
+            while (child > parent) {
                 if (idx >= 1) {
-                    [this.heap[Math.floor(idx / 2)], this.heap[idx]] = [this.heap[idx], this.heap[Math.floor(idx / 2)]]
-                    if (Math.floor(idx / 2) > 1) {
-                        idx = Math.floor(idx / 2)
+                    [parent, child] = [child, parent]
+                    if (parent > 1) {
+                        idx = parent
                     } else {
                         break
                     }
@@ -191,52 +194,77 @@ class Sample {
     }
 
     remove() {
-        let smallest = this.heap[1]
-        if (this.heap.length > 2) {
-            this.heap[1] = this.heap[this.heap.length - 1]
+        let largest = this.heap[0]
+        if (this.heap.length > 1) {
+            this.heap[0] = this.heap[this.heap.length - 1]
             this.heap.splice(this.heap.length - 1)
-            if (this.heap.length === 3) {
-                if (this.heap[1] > this.heap[2]) {
-                    [this.heap[1], this.heap[2]] = [this.heap[2], this.heap[1]]
+            if (this.heap.length === 2) {
+                if (this.heap[0] < this.heap[1]) {
+                    [this.heap[0], this.heap[1]] = [this.heap[1], this.heap[0]]
                 }
-                return smallest
+                return largest
             }
-            let i = 1
-            let left = 2 * i
-            let right = 2 * i + 1
-            while (this.heap[i] >= this.heap[left] || this.heap[i] >= this.heap[right]) {
+            let i = 0
+            let left = 2 * i + 1
+            let right = 2 * i + 2
+            while (this.heap[i] <= this.heap[left] || this.heap[i] <= this.heap[right]) {
                 if (this.heap[left] < this.heap[right]) {
                     [this.heap[i], this.heap[left]] = [this.heap[left], this.heap[i]]
-                    i = 2 * i
+                    i = 2 * i + 1
                 } else {
                     [this.heap[i], this.heap[right]] = [this.heap[right], this.heap[i]]
-                    i = 2 * i + 1
+                    i = 2 * i + 2
                 }
                 left = 2 * i
-                right = 2 * i + 1
-                if (this.heap[left] == undefined || this.heap[right == undefined]) {
+                right = 2 * i + 2
+                if (this.heap[left] === undefined || this.heap[right] === undefined) {
                     break
                 }
             }
-        } else if (this.heap.length === 2) {
-            this.heap.splice(1, 1)
+        } else if (this.heap.length === 1) {
+
         } else {
-            return null
+
         }
-        return smallest
+        return largest
     }
 }
-const sample = new Sample()
 
-sample.insert(10)
-// sample.insert(11)
-// sample.insert(4)
-// sample.insert(6)
-// sample.insert(20)
-// sample.insert(5)
+//Graph
 
-console.log(sample.heap);
+class Graph {
+    constructor() {
+        this.adjacencyList = {}
+    }
 
-sample.remove()
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) {
+            this.adjacencyList[vertex] = new Set()
+        }
+    }
 
-console.log(sample.heap);
+    addEdge(vertex1, vertex2) {
+        if (!this.adjacencyList[vertex1]) {
+            this.addVertex(vertex1)
+        }
+        this.adjacencyList[vertex1].add(vertex2)
+    }
+
+    display() {
+        for (let vertex in this.adjacencyList) {
+            console.log(vertex, "--->", [...this.adjacencyList[vertex]]);
+        }
+    }
+}
+
+const graph = new Graph()
+
+graph.addVertex("A")
+graph.addVertex("B")
+graph.addVertex("C")
+
+graph.addEdge("A", "B")
+graph.addEdge("B", "C")
+graph.addEdge("C", "A")
+
+graph.display()

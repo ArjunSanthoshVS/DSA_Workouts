@@ -1,18 +1,38 @@
+class Node {
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+    }
+}
 
-// function hash(key, size) {
-//     let index = 0
-//     for (let i = 0; i < key.length; i++) {
-//         index += key.charCodeAt(i)
-//     }
-//     return index % size
-// }
+class binaryTree {
+    constructor() {
+        this.root = null
+    }
 
-// let size = 100
-// let key = 'name'
+    insert(value) {
+        const newNode = new Node(value)
+        if (this.root === null) {
+            this.root = newNode
+        } else {
+            this.insertNode(this.root, newNode)
+        }
+    }
 
-// console.log(hash(key, size));
-
-
-let sample = Math.abs(-9)
-
-console.log(sample);
+    insertNode(root, newNode) {
+        if (newNode.value < root.value) {
+            if (!root.left) {
+                root.left = newNode
+            } else {
+                this.insertNode(root.left, newNode)
+            }
+        } else {
+            if (!root.right) {
+                root.right = newNode
+            } else {
+                this.insertNode(root.right, newNode)
+            }
+        }
+    }
+}
